@@ -16,13 +16,13 @@ _DivisionResultInfo Divide(int dividend, int divisor)
  
     __asm
     {
-        pushfd
+        pushad
         mov eax, dividend
         cdq //IDIV 명령을 위해 EDX, EAX 레지스터 준비, convert DWORD to QWORD
         idiv divisor
         mov result.quotient, eax
         mov result.reminder, edx
-        popfd
+        popad
     }
 
     return result;
